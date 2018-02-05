@@ -18,21 +18,38 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "products")
 public class Product implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @JsonIgnore
-    private String productId;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@JsonIgnore
+	private String productId;
 
-    @Column(unique = true, nullable = false, length = 10)
-    private String upc;
+	@Column(unique = true, nullable = false, length = 10)
+	private String upc;
 
-    @Column(unique = true, nullable = false, length = 13)
-    private String sku;
+	@Column(unique = true, nullable = false, length = 13)
+	private String sku;
 
-    @Column(nullable = false)
-    private String description;
+	@Column(nullable = false)
+	private String description;
 
-    @Column(nullable = false)
-    private BigDecimal price;
+	@Column(nullable = false)
+	private BigDecimal price;
+
+	public String toString() {
+		return "id " + productId + " sku " + sku + " description " + description + " price " + price;
+	}
+
+	public Product(String productId, String upc, String sku, String description, BigDecimal price) {
+		super();
+		this.productId = productId;
+		this.upc = upc;
+		this.sku = sku;
+		this.description = description;
+		this.price = price;
+	}
+
+	public Product() {
+
+	}
 
 }

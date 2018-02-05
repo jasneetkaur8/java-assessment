@@ -1,0 +1,6 @@
+Solution
+This project has been developed using Spring Boot in Spring Tool Suite(STS) 
+1. clean and compile code using mvn clean, mvn compile
+2. Run the application using Run As.. Java Application and select Application.java
+3. to run unit tests, use mvn clean test -Dtest=AllServiceTests,AllRepositoryTests,AllResourceTests
+4. to run integration test, use mvn clean test -Dtest=ApplicationTest

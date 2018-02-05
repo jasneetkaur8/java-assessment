@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.notFound;
@@ -18,21 +19,32 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequestMapping("/products")
 public class ProductResource {
 
-    @Autowired
-    private ProductService productService;
+	@Autowired
+	private ProductService productService;
 
-    @GetMapping
-    public ResponseEntity<List<Product>> listProducts() {
-        return ok(productService.listProducts());
-    }
+	@GetMapping
+	public ResponseEntity<List<Product>> listProducts() {
+		List<Product> products = productService.listProducts();
+		products.forEach(a -> System.out.println(a));
+		return ok(products);
+	}
 
-    @GetMapping(value = "/{productId}")
-    public ResponseEntity<Product> getProduct(@PathVariable String productId) {
-        Product product = productService.getProduct(productId);
-        if (product == null) {
-            return notFound().build();
-        }
-        return ok(product);
-    }
+	@GetMapping(value = "/{productId}")
+	public ResponseEntity<Product> getProduct(@PathVariable String productId) {
+		Product product = productService.getProduct(productId);
+		if (product == null) {
+			return notFound().build();
+		}
+		return ok(product);
+	}
+
+	@GetMapping(value = "/priceMoreThan30")
+	public ResponseEntity<List<Product>> getProduct() {
+		List<Product> products = productService.getProductsWithPriceMoreThan(new BigDecimal(30));
+		if (products == null) {
+			return notFound().build();
+		}
+		return ok(products);
+	}
 
 }

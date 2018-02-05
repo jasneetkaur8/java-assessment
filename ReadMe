@@ -2,5 +2,15 @@ Solution
 This project has been developed using Spring Boot in Spring Tool Suite(STS) 
 1. clean and compile code using mvn clean, mvn compile
 2. Run the application using Run As.. Java Application and select Application.java
+2.1 access it at http://localhost:8088
+ -- for all orders add /orders to the url
+ -- for order with order id 1  add 
+ -- for all products = /products
+ -- for product with id 1 = /products/1
+ --to search all Shipped orders =  /search?status=SHIPPED
+ -- to search orders with discount = /search/ordersWithDiscounts
+ -- to search orders with more than 2 products = /search?ordersWithProductsMoreThan=2
+ -- to search products pricer than 30 = /search?productsWithPriceMoreThan=30
+
 3. to run unit tests, use mvn clean test -Dtest=AllServiceTests,AllRepositoryTests,AllResourceTests
 4. to run integration test, use mvn clean test -Dtest=ApplicationTest
